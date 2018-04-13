@@ -17,6 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string provider
  * @property string provider_id
  * @property string access_token
+ * @property UserProperty property
  */
 class User extends Authenticatable
 {
@@ -39,10 +40,10 @@ class User extends Authenticatable
         ];
 
 
-//    public function property()
-//    {
-//        return $this->hasOne(UserProperty::class, 'user_id', 'id');
-//    }
+    public function property()
+    {
+        return $this->hasOne(UserProperty::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

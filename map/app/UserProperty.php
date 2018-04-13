@@ -24,10 +24,14 @@ class UserProperty extends Model
             'status',
         ];
 
-//    public function user()
-//    {
-//        return $this->hasOne(User::class);
-//    }
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 
+    public function getStatusAttribute($key)
+    {
+        return $key ?? 'active';
+    }
 
 }

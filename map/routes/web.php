@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get(
     '/',
     function () {
@@ -28,9 +30,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Role
-Route::get('role/set/{user}/{role}', 'Auth\AuthController@setRole')->name('setRole')->middleware('role:super-admin');
-Route::get('role/unset/{user}/{role}', 'Auth\AuthController@unsetRole')->name('unsetRole')->middleware('role:super-admin');
+Route::group(
+    ['middleware' => ['role:super-admin']],
+    function () {
+        Route::get('role/set/{user}/{role}', 'Auth\AuthController@setRole')->name('setRole');
+        Route::get('role/unset/{user}/{role}', 'Auth\AuthController@unsetRole')->name('unsetRole');
+        Route::delete('user/destroy/{user}', 'Auth\AuthController@destroyUser')->name('destroyUser');
 
+        Route::get('user/status/{user}/{status}','Auth\AuthController@userStatus')->name('userStatus');
+    }
+);
 
 // OAuth Routes
 Route::get('oauth/{provider}', 'Auth\AuthController@redirectToProvider');

@@ -11,6 +11,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserProperty;
+use Couchbase\UserSettings;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -74,6 +76,7 @@ class AuthController extends Controller
 
             return $authUser;
         }
+        /** @var User $user */
         $user = User::create(
             [
                 'name'         => $user->name,
@@ -84,6 +87,7 @@ class AuthController extends Controller
                 'access_token' => $user->token,
             ]
         );
+        $user->property()->save(new UserProperty([status => 'active']));
         $user->assignRole('writer');
 
         return $user;
@@ -101,6 +105,21 @@ class AuthController extends Controller
         User::find($user_id)->removeRole($role);
 
         return redirect()->back();
+    }
+
+    public function destroyUser($user_id)
+    {
+        dd(User::find($user_id));
+
+//            ->destroy();
+
+        return redirect()->back();
+    }
+
+    public function userStatus($user_id, $status)
+    {
+        User::find($user_id)->property->status = $status;
+
     }
 
 }
