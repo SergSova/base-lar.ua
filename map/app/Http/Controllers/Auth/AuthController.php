@@ -89,4 +89,18 @@ class AuthController extends Controller
         return $user;
     }
 
+    public function setRole($user_id, $role)
+    {
+        User::find($user_id)->assignRole($role);
+
+        return redirect()->back();
+    }
+
+    public function unsetRole($user_id, $role)
+    {
+        User::find($user_id)->removeRole($role);
+
+        return redirect()->back();
+    }
+
 }

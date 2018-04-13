@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -24,10 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
-        foreach ($users as $user) {
-            $user->assignRole(['writer', 'super-admin']);
-        }
+        $roles = Role::all();
 
-        return view('home');
+        return view('home')->with(compact('users', 'roles'));
     }
 }

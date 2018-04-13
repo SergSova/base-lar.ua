@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 Auth::routes();
 
@@ -22,6 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Role
+Route::get('role/set/{user}/{role}', 'Auth\AuthController@setRole')->name('setRole')->middleware('role:super-admin');
+Route::get('role/unset/{user}/{role}', 'Auth\AuthController@unsetRole')->name('unsetRole')->middleware('role:super-admin');
 
 
 // OAuth Routes

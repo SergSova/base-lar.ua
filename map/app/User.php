@@ -38,6 +38,12 @@ class User extends Authenticatable
             'access_token',
         ];
 
+
+//    public function property()
+//    {
+//        return $this->hasOne(UserProperty::class, 'user_id', 'id');
+//    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
