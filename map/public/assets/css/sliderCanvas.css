@@ -1,0 +1,198 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+* {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {font-family: 'Comfortaa-Regular'; src: url('../fonts/Comfortaa/Comfortaa-Regular.ttf');}
+@font-face {font-family: 'Comfortaa-Bold'; src: url('../fonts/Comfortaa/Comfortaa-Bold.ttf');}
+@font-face {font-family: 'Comfortaa-Light'; src: url('../fonts/Comfortaa/Comfortaa-Light.ttf');}
+@font-face {font-family: 'Montserrat-Medium'; src: url('../fonts/Montserrat/Montserrat-Medium.ttf');}
+@font-face {font-family: 'Montserrat-Light'; src: url('../fonts/Montserrat/Montserrat-Light.ttf');}
+
+#bubles-container canvas {
+    cursor: none!important;
+}
+
+#bubles-container,
+#rocket-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: 'Montserrat-Medium', 'sans-serif';
+}
+
+#rocket-container canvas {
+    height: 100%;
+}
+
+.rocket-btn-wrap {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    font: 16px 'Montserrat-Light';
+}
+
+.rocket-btn {
+    background: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    padding: 9px 80px;
+    border-radius: 5px;
+    border: 1px solid #00C3CC;
+    margin: 0 20px;
+    position: relative;
+    transition: all .5s linear;
+    backface-visibility: hidden;
+    font: 16px 'Montserrat-Light';
+}
+
+.rocket-btn:focus {
+    outline: none;
+}
+
+.rocket-btn::after {
+    content: '';
+    position: absolute;
+    width: 99%;
+    height: 74%;
+    left: -5%;
+    top: -14%;
+    backface-visibility: hidden;
+    border: 10px solid #1A2ECF;
+    opacity: .4;
+    filter: blur(4px);
+    transition: all .6s linear;
+}
+
+
+.rocket-btn.hover {
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+    border-color: #0894CD;
+}
+
+.rocket-btn.hover::after {
+    opacity: 0.1;
+}
+
+.rocket-btn-text {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+
+.neon-pink {
+    text-shadow: 0 0 10px #5059D7, 0 0 20px #5059D7, 0 0 30px #5059D7, 0 0 40px #5059D7, 0 0 70px #5059D7, 0 0 80px #5059D7, 0 0 100px #5059D7, 0 0 150px #5059D7;
+}
+
+.neon-blue {
+    text-shadow: 0 0 10px #63d6f0, 0 0 20px #63d6f0, 0 0 30px #63d6f0, 0 0 40px #63d6f0, 0 0 70px #63d6f0, 0 0 80px #63d6f0, 0 0 100px #63d6f0, 0 0 150px #63d6f0;
+}
+
+.neon-white {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #fff;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Comfortaa', 'Montserrat', sans-serif;
+    font-size: 1.58vw;
+    line-height: 1.7vw;
+    padding: 2vw 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+
+.rocket-title {
+    color: #fff;
+    opacity: 0;
+    -webkit-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+    /*font-size: 1.3vw;*/
+}
+
+.bubbles h1 {
+    opacity: 0;
+    -webkit-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+}
+
+.rocket-title.load,
+.bubbles h1.load {
+    opacity: 1;
+}
+
+.full {
+    height: 100%;
+    width: 100%;
+}
+
+@media all and (max-width: 1200px) and (min-width: 768px) {
+    .rocket-btn-wrap {
+        left: 19%!important;
+    }
+}
+@media all and (max-width: 991px) {
+    /*.rocket-btn:after {
+        width: 91%;
+        height: 64%;
+        left: -8%;
+        top: -34%;
+    }*/
+    .rocket-btn {
+        padding: 6px 40px;
+        margin: 0 10px;
+    }
+    .rocket-btn-wrap {
+        left: 28%;
+        width: 350px;
+        text-align: center;
+        font-size: 11px;
+        bottom: 10px;
+    }
+
+    .slider-controls {
+        bottom: 10px;
+    }
+}
+
+@media all and (max-width: 600px) and (orientation: landscape) {
+    .rocket-btn-wrap {
+        left: 11%!important;
+    }
+
+    .rocket-btn {
+        padding: 3px 20px;
+        margin: 0 10px;
+        font-size: 11px;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .rocket-btn-wrap {
+        width: auto;
+    }
+}

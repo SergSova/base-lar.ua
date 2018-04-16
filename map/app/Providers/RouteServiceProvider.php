@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\BlogCategory;
+use App\Models\Post;
+use App\Models\StaticPage;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -26,6 +29,21 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        Route::model('staticPage', StaticPage::class);
+        Route::model('post', Post::class);
+        Route::bind(
+            'category',
+            function ($catSlug) {
+                return BlogCategory::where('slug', $catSlug)->first();
+            }
+        );
+        Route::bind(
+            'article',
+            function ($slug) {
+                return Post::where('slug', $slug)->first();
+            }
+        );
+
     }
 
     /**

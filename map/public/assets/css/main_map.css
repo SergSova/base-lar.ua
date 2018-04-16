@@ -1,0 +1,502 @@
+ body, html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@font-face {
+    font-family: 'Code-Pro-Bold';
+    src: url('../fonts/Code-Pro-Bold.eot');
+    src: url('../fonts/Code-Pro-Bold.woff2') format('woff2'),
+        url('../fonts/Code-Pro-Bold.woff') format('woff'),
+        url('../fonts/Code-Pro-Bold.ttf') format('truetype'),
+        url('../fonts/Code-Pro-Bold.svg#Code-Bold') format('svg'),
+        url('../fonts/Code-Pro-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+/*
+.gmnoprint {
+    display: none;
+}
+*/
+.map-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.map-inner {
+    position: static;
+}
+
+.map-inner {
+    z-index: 3;
+}
+
+#map,
+.map-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.map-overlay:before,
+.map-overlay:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.map-overlay {
+    pointer-events: none;
+}
+
+.map-overlay:after {
+    bottom: 0;
+    background: url('../img/map/noiz.png') no-repeat;
+    background-size: cover;
+    opacity: .28;
+    z-index: 12;
+}
+
+/*.burger {
+    position: absolute;
+    right: 2%;
+    top: 4%;
+    height: 50px;
+    width: 52px;
+    z-index: 50;
+}
+
+.burger-item {
+    display: block;
+    width: 100%;
+    position: absolute;
+    transition: all .5s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.burger-item_top {
+    background: url(../img/burger-top.png);
+    height: 24px;
+}
+
+.burger-item_center {
+    background: url(../img/burger-center.png);
+    height: 18px;
+    top: 24.5px;
+}
+
+.burger-item_bottom {
+    background: url(../img/burger-bottom.png);
+    height: 13px;
+    top: 42.7px;
+}
+
+.burger:hover .burger-item_top {
+    transform: translateY(-10px);
+}
+
+.burger:hover .burger-item_bottom {
+    transform: translateY(10px);
+}*/
+
+.game-icons {
+    position: absolute;
+    z-index: 20;
+}
+.top-logo {
+    top: 4%;
+    left: 2%;
+}
+.game-icons {
+    position: absolute;
+    z-index: 20;
+}
+/*.top-logo {
+    top: 4%;
+    left: 2%;
+}
+
+.game-icons.top-logo img {
+    width: 50%;
+    height: auto;
+}
+.game-icons.top-logo img {
+    width: 50%;
+    height: auto;
+}*/
+
+.title {
+    position: absolute;
+    z-index: 21;
+    left: 9%;
+    top: 21.4%;
+}
+
+.map-clip-fix, .marker-info:after {
+    background-image: -webkit-linear-gradient( 315deg, rgb(0,244,184) 0%, rgb(57,184,203) 7%, rgb(121,56,228) 15%, rgb(230,228,98) 24%, rgb(171,208,55) 32%, rgb(195,227,93) 40%, rgb(108,229,228) 47%, rgb(48,221,220) 54%, rgb(126,11,214) 62%, rgb(218,41,101) 70%, rgb(0,244,184) 84%, rgb(57,184,203) 94%, rgb(121,56,228) 100%);
+    background-image: -moz-linear-gradient( 315deg, rgb(0,244,184) 0%, rgb(57,184,203) 7%, rgb(121,56,228) 15%, rgb(230,228,98) 24%, rgb(171,208,55) 32%, rgb(195,227,93) 40%, rgb(108,229,228) 47%, rgb(48,221,220) 54%, rgb(126,11,214) 62%, rgb(218,41,101) 70%, rgb(0,244,184) 84%, rgb(57,184,203) 94%, rgb(121,56,228) 100%);
+    background-image: -o-linear-gradient( 315deg, rgb(0,244,184) 0%, rgb(57,184,203) 7%, rgb(121,56,228) 15%, rgb(230,228,98) 24%, rgb(171,208,55) 32%, rgb(195,227,93) 40%, rgb(108,229,228) 47%, rgb(48,221,220) 54%, rgb(126,11,214) 62%, rgb(218,41,101) 70%, rgb(0,244,184) 84%, rgb(57,184,203) 94%, rgb(121,56,228) 100%);
+    background-image: linear-gradient( 135deg, rgb(0,244,184) 0%, rgb(57,184,203) 7%, rgb(121,56,228) 15%, rgb(230,228,98) 24%, rgb(171,208,55) 32%, rgb(195,227,93) 40%, rgb(108,229,228) 47%, rgb(48,221,220) 54%, rgb(126,11,214) 62%, rgb(218,41,101) 70%, rgb(0,244,184) 84%, rgb(57,184,203) 94%, rgb(121,56,228) 100%);
+    font-size: 5.208vw;
+    font-family: 'Code-Pro-Bold';
+    -moz-background-clip: text;
+      -o-background-clip: text;
+         background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-position:  0 0%;
+    -webkit-background-size: 1000% 100%;
+       -moz-background-size: 1000% 100%;
+         -o-background-size: 1000% 100%;
+            background-size: 1000% 100%;
+    -webkit-animation: stripes-fix 17s infinite linear forwards;
+       -moz-animation: stripes-fix 17s infinite linear forwards;
+         -o-animation: stripes-fix 17s infinite linear forwards;
+            animation: stripes-fix 17s infinite linear forwards;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 100px;
+    line-height: 1;
+}
+
+@-webkit-keyframes stripes-fix {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+@-moz-keyframes stripes-fix {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+@-o-keyframes stripes-fix {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes stripes-fix {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+.map-toggle {
+    margin-top: 2vw;
+}
+
+.map-toggle__link {
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    color: #727272;
+    font: 2vmin 'Montserrat';
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 0;
+    text-align: center;
+    border-bottom: 1px solid #232323;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.map-toggle__link.active {
+    color: #fff;
+}
+
+.map-toggle__link:last-child {
+    border-bottom: none;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+}
+
+.marker-info {
+    background: #000;
+    width: 395px;
+    padding: 25px 40px 35px 40px;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    z-index: 30;
+    transform: translate(-50%, calc(-100% - 56px));
+    z-index: 25;
+}
+
+.marker-info.anim {
+    transition: opacity 1s;
+}
+
+.marker-info:after {
+    content: 'place';
+    text-transform: none;
+    font: 75px 'Material Icons';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    /*background: url('../img/activeMarker.png');
+    background-size: cover;*/
+    transition: transform .5s;
+    transform-origin: bottom;
+    transform: translate(-50%, -16%) scale(1.2);
+    opacity: 1;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.hide:after {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate(-50%, -16%) scale(1);
+}
+
+.marker-info__title {
+    text-transform: uppercase;
+    font: 14px Montserrat;
+    font-weight: 500;
+}
+
+.marker-info__content {
+    font: 13px Montserrat;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.marker-info__btn {
+    width: 62px;
+    height: 62px;
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.marker-info__btn:first-child {
+    margin-top: 0;
+}
+
+.marker-info__btn_1 {
+    background: url('../img/map/icon1.png');
+    background-size: cover;
+}
+
+.marker-info__btn_2 {
+    background: url('../img/map/icon2.png');
+    background-size: cover;
+}
+
+.marker-info__btns {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.marker-info__content p {
+    margin-top: 20px;
+}
+
+.marker-info__copyright {
+    right: 10.7%;
+    top: 90%;
+    position: absolute;
+    z-index: 28;
+    color: #fff;
+    font: 14px Montserrat;
+}
+
+.gm-style-iw {
+    background: #000!important;
+}
+
+@media all and (max-width: 991px) {
+    .main-caption,
+    .marker-info__copyright {
+        display: none;
+    }   
+
+    .title {
+        display: none;
+    }
+
+    .map-toggle {
+        margin-top: 0;
+        display: flex;
+    }
+
+    .map-toggle__link {
+        background: rgba(0, 0, 0, .9);
+    }
+
+    .marker-info__btn {
+        height: 38px;
+        width: 38px;
+    }
+
+    .marker-info__title {
+        font-size: 8.4px;
+    }
+
+    .marker-info__content {
+        font-size: 7.8px;
+    }
+
+    .marker-info {
+        width: 240px;
+    }
+
+    .marker-info__content p {
+        margin-top: 15px;
+    }
+}
+
+/*---------------------navigate-box styles ----------------------------------*/
+    .content-section {
+        position: relative;
+        height: 100%;
+        margin: 0 auto;
+        z-index: 6;
+        pointer-events: none;
+    }
+
+    @media(min-width: 1280px) {
+        .content-section {
+            width: 75.26%;
+        }
+    }
+
+    /*mobile, ------------------ ipads*/
+        @media(min-width: 1366px) and (max-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+        (min-width: 1366px) and (max-width: 1366px) and (-o-min-device-pixel-ratio: 2/1) and (orientation: landscape),
+        (min-width: 1366px) and (max-width: 1366px) and (min-resolution: 192dpi) and (orientation: landscape),
+        (min-width: 1112px) and (max-width: 1112px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape),
+        (min-width: 1112px) and (max-width: 1112px) and (-o-min-device-pixel-ratio: 2/1) and (orientation: landscape),
+        (min-width: 1112px) and (max-width: 1112px) and (min-resolution: 192dpi) and (orientation: landscape),
+        (min-width: 320px) and (max-width: 1024px) and (orientation: landscape) {
+            .content {
+                overflow: auto;
+            }
+
+            .content-section {
+                width: 90.652%;
+            }
+        }
+    /*mobile, ------------------ ipads*/
+
+
+
+/*---------------------menu styles ----------------------------------*/
+    .menu-box {
+        position: absolute;
+        z-index: 1;
+        text-align: center;
+        pointer-events: auto;
+    }
+
+    .menu-box:hover {
+        cursor: pointer;
+    }
+
+    .menu-box_text {
+        display: block;
+    }
+
+    @media(min-width: 320px) and (max-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.3020833333333333),
+    (min-width: 320px) and (max-width: 1366px) and (orientation: landscape) and (-o-min-device-pixel-ratio: 125/96),
+    (min-width: 320px) and (max-width: 1366px) and (orientation: landscape) and (min-resolution: 125dpi),
+    (min-width: 320px) and (orientation: landscape) and (max-width: 1279px) {
+        .menu-box {
+            width: 3.831vw;
+            top: 5.291vw;
+            right: 0;
+        }
+
+        .menu-box_text {
+            display: none;
+        }
+    }
+
+    @media(min-width: 1280px) and (-webkit-max-device-pixel-ratio: 1.1979166666666667), (min-width: 1280px) and (-o-max-device-pixel-ratio: 115/96), (min-width: 1280px) and (max-resolution: 115dpi), (min-width: 1368px) and (-webkit-min-device-pixel-ratio: 1.3020833333333333), (min-width: 1368px) and (-o-min-device-pixel-ratio: 125/96), (min-width: 1368px) and (min-resolution: 125dpi) {
+        .menu-box {
+            right: -8.093vw;
+            -webkit-transform: translateX(100%);
+            -moz-transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -o-transform: translateX(100%);
+                    transform: translateX(100%);
+            top: 5.107vh;
+        }
+
+        .menu-box_img {
+            margin-bottom: 10px;
+        }
+
+        .menu-box_text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: white;
+        }
+    }
+
+    @media(min-width: 1280px) and (-webkit-max-device-pixel-ratio: 1.1979166666666667) and (max-width: 1919px), (min-width: 1280px) and (-o-max-device-pixel-ratio: 115/96) and (max-width: 1919px), (min-width: 1280px) and (max-resolution: 115dpi) and (max-width: 1919px), (min-width: 1368px) and (-webkit-min-device-pixel-ratio: 1.3020833333333333), (min-width: 1368px) and (-o-min-device-pixel-ratio: 125/96), (min-width: 1368px) and (min-resolution: 125dpi) {
+        .menu-box {
+            right: -5vw;
+        }
+    }
+/*---------------------menu styles ----------------------------------*/
+
+.marker-info__btns.condom .marker-info__btn_2 {
+    display: none;
+}
+
+.marker-info__btns.miki .marker-info__btn_1 {
+    display: none;
+}
+
+.marker-info__btns.condom .marker-info__btn,
+.marker-info__btns.miki .marker-info__btn {
+    margin-top: 0;
+}

@@ -1,0 +1,605 @@
+body,
+.container.with-who {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:focus {
+    outline: 0;
+}
+
+.with-who .party-bg {
+    background: url('../img/with-who/bg.png') no-repeat center;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.with-who .title {
+    height: 10vh;
+}
+
+.with-who h1 {
+    font-family: 'Comfortaa', 'Montserrat', sans-serif;
+    font-size: 1.58vw;
+    /*line-height: 5.7vw;*/
+    line-height: 1.7vw;
+    padding: 2vw 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+h1.neon-pink {
+    text-shadow: 0 0 10px #c04c4c, 0 0 20px #c04c4c, 0 0 30px #c04c4c, 0 0 40px #c04c4c, 0 0 70px #c04c4c, 0 0 80px #c04c4c, 0 0 100px #c04c4c, 0 0 150px #c04c4c;
+}
+
+.with-who .humans {
+    position: relative;
+    width: 74%;
+    height: 85vh;
+    margin: 0 auto;
+}
+
+.human-option {
+    position: relative;
+    height: inherit;
+    width: auto;
+}
+
+.human-option > div {
+    position: absolute;
+}
+
+/*------------------Human text----------------------------*/
+.human.active .illness {
+    opacity: 1;
+}
+
+.name-illness {
+    top: 8%;
+    width: auto;
+    min-width: 264px;
+    height: auto;
+    font-family: 'Comfortaa', cursive;
+    font-size: 1vw;
+    line-height: 2.5vh;
+    letter-spacing: 0.2vw;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
+}
+
+.name-illness .name,
+.name-illness .illness {
+    font-size: 100%;
+    opacity: 0;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+/*-------------------Human---------------------------*/
+.with-who .human {
+    position: absolute;
+    height: inherit;
+    width: 12%;
+}
+
+.human:hover .name-illness .name,
+.human.active .name {
+    opacity: 1;
+}
+
+.human-img {
+    cursor: pointer;
+    bottom: 0;
+    height: 70vh;
+    width: auto;
+    -webkit-filter: grayscale(80%);
+    -moz-filter: grayscale(80%);
+    -ms-filter: grayscale(80%);
+    -o-filter: grayscale(80%);
+    filter: grayscale(80%);
+    filter: gray;
+    z-index: 0;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.human:hover .human-img,
+.human.active .human-img {
+    -webkit-filter: none;
+    -moz-filter: none;
+    -ms-filter: none;
+    -o-filter: none;
+    filter: none;
+    z-index: 2;
+    -webkit-transition: z-index .001s;
+    -moz-transition: z-index .001s;
+    -o-transition: z-index .001s;
+    transition: z-index .001s;
+}
+
+.human-img img {
+    height: inherit;
+    width: auto;
+    padding: 0 0 4vh 0;
+    overflow: visible;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.human.active .human-img,
+.human.active .name-illness {
+    cursor: auto;
+    z-index: 4;
+}
+/*Andrey 1*/
+.human:nth-child(1) {
+    left: 0.3%;
+    top: -3.3%;
+}
+
+.human:nth-child(1) .name-illness {
+    top: 9.8%;
+    left: -5.5%;
+    text-shadow: 0 0 10px #4c4fc0, 0 0 20px #4c4fc0, 0 0 30px #4c4fc0, 0 0 40px #4c4fc0, 0 0 70px #4c4fc0, 0 0 80px #4c4fc0, 0 0 100px #4c4fc0, 0 0 150px #4c4fc0;
+}
+
+.human:nth-child(1):hover img,
+.human.active:nth-child(1) img {
+    -webkit-filter: drop-shadow(0 0 20px #4c4fc0);
+    filter: drop-shadow(0 0 20px #4c4fc0);
+}
+
+/*Julia 2*/
+.human:nth-child(2) {
+    left: 13.8%;
+    top: 0%;
+}
+
+.human:nth-child(2) .name-illness {
+    left: -37.1%;
+    top: 6.2%;
+    transform: rotate(5deg);
+    text-shadow: 0 0 10px #d5fb00, 0 0 20px #d5fb00, 0 0 30px #d5fb00, 0 0 40px #d5fb00, 0 0 70px #d5fb00, 0 0 80px #d5fb00, 0 0 100px #d5fb00, 0 0 150px #d5fb00;
+}
+
+.human:nth-child(2):hover img,
+.human.active:nth-child(2) img {
+    -webkit-filter: drop-shadow(0 0 20px #d5fb00);
+    filter: drop-shadow(0 0 20px #d5fb00);
+}
+
+/*Dany 3*/
+.human:nth-child(3) {
+    left: 24.8%;
+    top: -1.4%;
+}
+
+.human:nth-child(3) .name-illness {
+    left: -20.9%;
+    top: 8.3%;
+    transform: rotate(-3deg);
+    text-shadow: 0 0 10px #8a61a4, 0 0 20px #8a61a4, 0 0 30px #8a61a4, 0 0 40px #8a61a4, 0 0 70px #8a61a4, 0 0 80px #8a61a4, 0 0 100px #8a61a4, 0 0 150px #8a61a4;
+}
+
+.human:nth-child(3):hover img,
+.human.active:nth-child(3) img {
+    -webkit-filter: drop-shadow(0 0 20px #8a61a4);
+    filter: drop-shadow(0 0 20px #8a61a4);
+}
+
+/*Margo 4*/
+.human:nth-child(4) {
+    left: 37%;
+    top: -2%;
+}
+
+.human:nth-child(4) .name-illness {
+    left: -29.4%;
+    top: 9.2%;
+    transform: rotate(-3deg);
+    text-shadow: 0 0 10px #c04c4c, 0 0 20px #c04c4c, 0 0 30px #c04c4c, 0 0 40px #c04c4c, 0 0 70px #c04c4c, 0 0 80px #c04c4c, 0 0 100px #c04c4c, 0 0 150px #c04c4c;
+}
+
+.human:nth-child(4):hover img,
+.human.active:nth-child(4) img {
+    -webkit-filter: drop-shadow(0 0 20px #c04c4c);
+    filter: drop-shadow(0 0 20px #c04c4c);
+}
+
+/*Nastij 5*/
+.human:nth-child(5) {
+    left: 48.4%;
+    top: -1.4%;
+}
+
+.human:nth-child(5) .name-illness {
+    left: -32%;
+    top: 6.1%;
+    transform: rotate(2deg);
+    text-shadow: 0 0 10px #00fbf8, 0 0 20px #00fbf8, 0 0 30px #00fbf8, 0 0 40px #00fbf8, 0 0 70px #00fbf8, 0 0 80px #00fbf8, 0 0 100px #00fbf8, 0 0 150px #00fbf8;
+}
+
+.human:nth-child(5):hover img,
+.human.active:nth-child(5) img {
+    -webkit-filter: drop-shadow(0 0 20px #00fbf8);
+    filter: drop-shadow(0 0 20px #00fbf8);
+}
+
+/* Sasha 6*/
+.human:nth-child(6) {
+    left: 60.7%;
+    top: -2.3%;
+}
+
+.human:nth-child(6) .name-illness {
+    left: -32%;
+    top: 10%;
+    transform: rotate(-2deg);
+    text-shadow: 0 0 10px #4cc054, 0 0 20px #4cc054, 0 0 30px #4cc054, 0 0 40px #4cc054, 0 0 70px #4cc054, 0 0 80px #4cc054, 0 0 100px #4cc054, 0 0 150px #4cc054;
+}
+
+.human:nth-child(6):hover img,
+.human.active:nth-child(6) img {
+    -webkit-filter: drop-shadow(0 0 20px #4cc054);
+    filter: drop-shadow(0 0 20px #4cc054);
+}
+
+/*Alisa 7*/
+.human:nth-child(7) {
+    left: 73.5%;
+    top: -2.3%;
+}
+
+.human:nth-child(7) .name-illness {
+    left: -29.2%;
+    top: 7.5%;
+    transform: rotate(-2deg);
+    text-shadow: 0 0 10px #c0724c, 0 0 20px #c0724c, 0 0 30px #c0724c, 0 0 40px #c0724c, 0 0 70px #c0724c, 0 0 80px #c0724c, 0 0 100px #c0724c, 0 0 150px #c0724c;
+}
+
+.human:nth-child(7):hover img,
+.human.active:nth-child(7) img {
+    -webkit-filter: drop-shadow(0 0 20px #c0724c);
+    filter: drop-shadow(0 0 20px #c0724c);
+}
+
+/*Igor 8*/
+.human:nth-child(8) {
+    left: 83.1%;
+    top: -5%;
+}
+
+.human:nth-child(8) .name-illness {
+    left: -18.8%;
+    top: 7.6%;
+    transform: rotate(3deg);
+    text-shadow: 0 0 10px #ffcc33, 0 0 20px #ffcc33, 0 0 30px #ffcc33, 0 0 40px #ffcc33, 0 0 70px #ffcc33, 0 0 80px #ffcc33, 0 0 100px #ffcc33, 0 0 150px #ffcc33;
+}
+
+.human:nth-child(8):hover img,
+.human.active:nth-child(8) img {
+    -webkit-filter: drop-shadow(0 0 20px #ffcc33);
+    filter: drop-shadow(0 0 20px #ffcc33);
+}
+
+/*-----------------------Попап выбора-----------------------*/
+
+.human-popup {
+    background: rgba(0, 0, 0, .7);
+    width: 20vw;
+    /* max-height: 28.7vh; */
+    height: auto;
+    font-size: 0.7vw;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 0.1vw;
+    padding: 2.2vw 0.8vw 1.6vw;
+    -webkit-box-shadow: 0 0 84px 0 rgba(255,255,255,.1);
+    -moz-box-shadow: 0 0 84px 0 rgba(255,255,255,.1);
+    box-shadow: 0 0 84px 0 rgba(255,255,255,.1);
+}
+
+.human.active .human-popup {
+    top: 20%;
+    z-index: 5;
+}
+
+.human.active:nth-child(1) .human-popup {
+    left: 148%;
+}
+
+.human.active:nth-child(2) .human-popup,
+.human.active:nth-child(3) .human-popup,
+.human.active:nth-child(4) .human-popup {
+    left: 116%;
+}
+
+.human.active:nth-child(5) .human-popup,
+.human.active:nth-child(6) .human-popup,
+.human.active:nth-child(7) .human-popup,
+.human.active:nth-child(8) .human-popup {
+    right: 116%;
+}
+
+.btn-close {
+    position: absolute;
+    background: url("../img/with-who/btn-close.png") no-repeat center center;
+    width: 15px;
+    height: 15px;
+    top: 15px;
+    right: 9px;
+    cursor: pointer;
+}
+
+.human-popup .pop-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.human-popup .pop-title span {
+    color: #b63266;
+    font-size: 1vw;
+}
+
+.human-popup .form-you-know {
+    /*height: 204px;
+    overflow-y: auto;*/
+}
+
+.human-popup label {
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    line-height: 1.86vw;
+    pointer-events: none;
+}
+
+.human-popup .checkbox {
+    display: none;
+}
+
+.human-popup .checkbox-custom {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    position: relative;
+    width: 11px;
+    height: 11px;
+    float: right;
+}
+
+.checkbox-custom::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -11px;
+    left: -4px;
+    background: url("../img/with-who/question.svg") no-repeat;
+    background-size: contain;
+    width: 21px;
+    height: 0;
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    transition: height .5s;
+}
+.human.active .human-popup .ill:nth-child(1) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 2s;
+    -moz-transition: height .5s linear 2s;
+    -ms-transition: height .5s linear 2s;
+    -o-transition: height .5s linear 2s;
+    transition: height .5s linear 2s;
+}
+.human.active .human-popup .ill:nth-child(2) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 2.5s;
+    -moz-transition: height .5s linear 2.5s;
+    -ms-transition: height .5s linear 2.5s;
+    -o-transition: height .5s linear 2.5s;
+    transition: height .5s linear 2.5s;
+}
+.human.active .human-popup .ill:nth-child(3) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 3s;
+    -moz-transition: height .5s linear 3s;
+    -ms-transition: height .5s linear 3s;
+    -o-transition: height .5s linear 3s;
+    transition: height .5s linear 3s;
+}
+.human.active .human-popup .ill:nth-child(4) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 3.5s;
+    -moz-transition: height .5s linear 3.5s;
+    -ms-transition: height .5s linear 3.5s;
+    -o-transition: height .5s linear 3.5s;
+    transition: height .5s linear 3.5s;
+}
+.human.active .human-popup .ill:nth-child(5) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 4s;
+    -moz-transition: height .5s linear 4s;
+    -ms-transition: height .5s linear 4s;
+    -o-transition: height .5s linear 4s;
+    transition: height .5s linear 4s;
+}
+.human.active .human-popup .ill:nth-child(6) .checkbox-custom::before {
+    height: 23px;
+    -webkit-transition: height .5s linear 4.5s;
+    -moz-transition: height .5s linear 4.5s;
+    -ms-transition: height .5s linear 4.5s;
+    -o-transition: height .5s linear 4.5s;
+    transition: height .5s linear 4.5s;
+}
+/*.checkbox:checked + .checkbox-custom::before {
+    height: 15px;
+}*/
+
+.human-popup button {
+    background: transparent;
+    border: 0;
+    display: block;
+    margin: 15px auto 0;
+    text-align: center;
+    width: auto;
+    padding: 0;
+    color: #ff3366;
+    font-size: 1vw;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.human-popup button:hover {
+    text-decoration: underline;
+}
+
+/*----------------------Overlay------------------------*/
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.overlay,
+.human-popup {
+    opacity: 0;
+}
+.human.active .human-popup,
+.human.active .overlay {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition: opacity 2.5s ease-in-out;
+    -moz-transition: opacity 2.5s ease-in-out;
+    -ms-transition: opacity 2.5s ease-in-out;
+    -o-transition: opacity 2.5s ease-in-out;
+    transition: opacity 2.5s ease-in-out;
+}
+
+
+
+
+/* ----------- Retina Screens ----------- */
+@media
+only screen and (min-width: 1171px) and (max-width: 1440px),
+screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
+    .human:hover .human-img,
+    .human.active .human-img {
+        -webkit-transition: unset;
+        transition: unset;
+    }
+
+}
+
+@media
+only screen and (min-width: 2880px),
+screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (min-resolution: 192dpi),
+screen and (min-resolution: 2dppx) {
+    .human-popup {
+        width: 18.5vw;
+        font-size: 1vw;
+    }
+}
+
+
+
+
+/*-----------------------Tablet+Mobile Screens-----------------------*/
+
+@media screen and (min-width:320px) and (max-width:1024px) and (orientation:landscape) {
+    .with-who .humans {
+        width: calc(100% - 40px);
+        margin-left: 2%;
+    }
+    .human-popup {
+        width: 35vw;
+        font-size: 1.5vw;
+        max-height: initial;
+        top: 10%;
+    }
+    .human-popup label {
+        line-height: 4vw;
+    }
+    .checkbox-custom::before {
+    top: -6px;
+    left: -1px;
+    background-size: 80%;
+}
+    .human-popup .pop-title span,
+    .human-popup button {
+        font-size: 1.45vw;
+    }
+    .btn-close {
+        background: url(../img/with-who/btn-close.png) no-repeat center center;
+        top: 11px;
+        right: 3px;
+        background-size: 70%;
+    }
+}
+
+/*-----------------------Tablet Screens-----------------------*/
+
+@media screen and (min-width:768px) and (max-width:1024px) and (orientation:landscape) {
+    .human .name-illness {
+        left: -55% !important;
+    }
+}
+
+
+/*-----------------------Mobile Screens-----------------------*/
+
+@media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+    .with-who .title {
+        height: 3vh;
+    }
+    .with-who .humans {
+        height: 78vh;
+        margin-top: 7vh;
+    }
+    .human .name-illness {
+        left: -130% !important;
+        top: 3% !important;
+    }
+}

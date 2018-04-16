@@ -1,0 +1,23 @@
+/*-----------------------Portraite Screens-----------------------*/
+
+@media screen and (max-width: 780px) {
+    .top-logo {
+        width: 25vw;
+    }
+
+    .slider-controls {
+        width: 25vw;
+        right: 3%;
+        bottom: 0;
+    }
+    .bullets {
+        width: 6.2vw;
+    }
+}
+
+/* iPhone 5 */
+@media screen and (device-aspect-ratio: 40/71) {
+    .slider-controls {
+        bottom: 5vh;
+    }
+}

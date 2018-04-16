@@ -12,8 +12,15 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'name'    => 'Name',
+    'pass'    => 'Password',
+    'confirm' => 'Confirm password',
 
-    'failed' => 'These credentials do not match our records.',
+    'sign_up' => 'Sign Up',
+    'forgot'  => 'Forgot password',
+
+    'sign_in'  => 'Sign In',
+    'failed'   => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

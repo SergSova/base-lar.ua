@@ -73,6 +73,9 @@ class AuthController extends Controller
             if (!$authUser->can('edit articles')) {
                 $authUser->assignRole('writer');
             }
+            if (!isset($authUser->property->status)){
+                $authUser->property()->save(new UserProperty(['status' => 'active']));
+            }
 
             return $authUser;
         }
@@ -87,7 +90,7 @@ class AuthController extends Controller
                 'access_token' => $user->token,
             ]
         );
-        $user->property()->save(new UserProperty([status => 'active']));
+        $user->property()->save(new UserProperty(['status' => 'active']));
         $user->assignRole('writer');
 
         return $user;

@@ -1,0 +1,78 @@
+@media screen and (max-width: 1700px) {
+    .content {
+       padding: 175px 30px 0 30px;
+    }
+    .header-wrap {
+        padding: 0 30px 0 30px;
+    }
+    .header-bottom__phone {
+        padding-right: 30px;
+    }
+    .wrap-top-top {
+        left: -1.5vw;
+    }
+    .content .content-wrapper aside.blog-narrow {
+        max-width: 271px;
+        width: 100%;
+    }
+    article.tilter .blog-news-content .blog-title h2 {
+        font-size: 25.45px;
+    }
+    article.tilter .blog-news-content .blog-title h3 {
+        font-size: 10.87px;
+    }
+    article.tilter .blog-news {
+        min-height: 200px;
+    }
+    article.tilter.small .blog-news-content {
+        margin-bottom: 24px;
+    }
+    section.blog-small .medium-translate article.tilter .content-article .blog-news-content .blog-title h2 {
+        font-size: 18px;
+    }
+    section.blog-small .medium-translate article.tilter .blog-title h2 {
+        margin: 1px 16px;
+    }
+    section.blog-small .medium-translate article.tilter .content-article .blog-news-content .bottom-link {
+        margin-bottom: 54px;
+    }
+    section.blog-small .medium-translate article.tilter .blog-title {
+        padding: 10px 0;
+    }
+    section.blog-small .medium-translate article.tilter .content-article .blog-news-content .blog-news {
+        min-height: 180px;
+    }
+    .medium-translate article.tilter .blog-news-content {
+        margin-bottom: 8px;
+    }
+    .small-translate article.tilter .blog-news-content {
+        margin-bottom: 60px;
+    }
+
+    .small-translate iframe.video-blog {
+        height: 140px;
+    }
+    .video .blog-news-content.hover .blog-news p {
+        height: 111px;
+    }
+
+
+
+}
+@media screen and (max-width: 1400px) {
+   .large-translate iframe.video-blog {
+        height: 59vh;
+    }
+    article.blog-news .content-article:hover p {
+        transform: translate(0px, -170px);
+    }
+    section.blog-small .medium-translate article .content-article:hover p {
+        top: 340px;
+    }
+    section.blog-small .medium-translate article.video .content-article .blog-news-content p {
+        height: 90px;
+    }
+    section.blog-small .medium-translate article.video .content-article .blog-news-content.hover p {
+        height: 90px;
+    }
+}
