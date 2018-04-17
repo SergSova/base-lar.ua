@@ -26,13 +26,40 @@ $route = \Request::route()->getName();
                     <a href="{{route('staticPage')}}" class="nav-link {{$route=='staticPage'?'active':''}}">Статические
                         страницы</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('blog.index')}}" class="nav-link {{$route=='blog.index'?'active':''}}">Блог</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Блог</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{route('blog.index')}}">Статьи</a>
+                        <a class="dropdown-item" href="{{route('blog-category.index')}}">Категории</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('blog-category.index')}}"
-                       class="nav-link {{$route=='blog-category.index'?'active':''}}">Категории блога</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Место положения</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{route('country.index')}}">Страны</a>
+                        <a class="dropdown-item" href="{{route('city.index')}}">Города</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('dist.index')}}">Районы</a>
+                        <a class="dropdown-item" href="{{route('metro.index')}}">Метро</a>
+                    </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Карта</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{route('institution-categories.index')}}">Категории</a>
+                        <a class="dropdown-item" href="{{route('institution-sub-categories.index')}}">Подкатегории</a>
+                        <a class="dropdown-item" href="{{route('institution.index')}}">Заведения</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{route('yammer.index')}}">Жалобы</a>
+                        <a class="dropdown-item" href="{{route('review.index')}}">Отзывы</a>
+                    </div>
+                </li>
+                @role('super-admin')
+                <li class="nav-item">
+                    <a href="{{route('user.index')}}"
+                       class="nav-link {{$route=='user.index'?'active':''}}">Пользователи</a>
+                </li>
+                @endrole
             </ul>
 
             <!-- Right Side Of Navbar -->

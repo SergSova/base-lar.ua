@@ -79,8 +79,6 @@ Route::group(
 );
 
 
-
-
 Route::get(
     '/',
     function () {
@@ -101,11 +99,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(
     ['middleware' => ['role:super-admin']],
     function () {
-        Route::get('role/set/{user}/{role}', 'Auth\AuthController@setRole')->name('setRole');
-        Route::get('role/unset/{user}/{role}', 'Auth\AuthController@unsetRole')->name('unsetRole');
-        Route::delete('user/destroy/{user}', 'Auth\AuthController@destroyUser')->name('destroyUser');
-
-        Route::get('user/status/{user}/{status}', 'Auth\AuthController@userStatus')->name('userStatus');
 
         Route::group(
             ['prefix' => 'admin'],
@@ -115,9 +108,9 @@ Route::group(
 //        Route::get('/', 'Admin\IndexController@index')->name('admin');
                 Route::get('/', 'Admin\StaticPageController@index')->name('admin');
                 Route::get('/static', 'Admin\StaticPageController@index')->name('staticPage');
-                Route::get('/static/edit/{staticPage}/{name}','Admin\StaticPageController@edit')
+                Route::get('/static/edit/{staticPage}/{name}', 'Admin\StaticPageController@edit')
                     ->name('staticPageView')->where(['staticPage' => '[0-9]+']);
-                Route::post('/static/edit/{staticPage}/{name}','Admin\StaticPageController@edit')
+                Route::post('/static/edit/{staticPage}/{name}', 'Admin\StaticPageController@edit')
                     ->name('staticPageEdit')->where(['staticPage' => '[0-9]+']);
 
                 Route::resource('/blog', 'Admin\BlogController');
@@ -127,6 +120,36 @@ Route::group(
                 Route::post('/blog/restore/{post_id}', 'Admin\BlogController@restore')->name('blog.restore')->where(['post_id' => '[0-9]+']);
                 Route::delete('/blog-clear/{blog?}', 'Admin\BlogController@removeAll')->name('blog.clear');
 
+                Route::group(
+                    ['prefix' => 'user'],
+                    function () {
+                        Route::get('/', 'Admin\UsersController@index')->name('user.index');
+                        Route::get('/edit/{user}', 'Admin\UsersController@edit')->name('user.edit');
+                        Route::post('/update/{user}', 'Admin\UsersController@update')->name('user.update');
+                        Route::post('/status/{user}/{status}', 'Admin\UsersController@userStatus')->name('user.status');
+                        Route::get('/role-set/{user_id}/{role}', 'Admin\UsersController@setRole')->name('user.setRole');
+                        Route::get('/role-unset/{user_id}/{role}', 'Admin\UsersController@unsetRole')->name('user.unsetRole');
+                        Route::delete('/destroy/{user_id}', 'Admin\UsersController@destroy')->name('user.destroy');
+                    }
+                ); //пользователи
+
+                Route::resource('/country', 'Admin\CountryController'); //страны
+                Route::resource('/city', 'Admin\CityController'); //города
+                Route::post('/city-by-country/{country_id?}', 'Admin\CityController@cityByCountry')->name('cityByCountry'); //получить города по стране
+                Route::resource('/dist', 'Admin\DistrictController'); //районы
+                Route::resource('/metro', 'Admin\MetroController'); //метро
+
+
+                Route::resource('/institution-categories', 'Admin\InstitutionCategoriesController'); //категории заведений
+                Route::resource('/institution-sub-categories', 'Admin\InstitutionSubCategoriesController');
+                Route::get('/institution-sub-categories/create/{parent_id?}', 'Admin\InstitutionSubCategoriesController@create')->name('institution-sub-categories.create');
+                Route::resource('/mark', 'Admin\MarkController'); //Метки
+                Route::get('/mark/create/{parent_id?}', 'Admin\MarkController@create')->name('mark.create');
+                Route::resource('/institution', 'Admin\InstitutionController'); //заведения
+
+                Route::resource('/yammer', 'Admin\YammerController');//жалобы
+                Route::resource('/review', 'Admin\ReviewController');//отзывы
+                Route::resource('/comment', 'Admin\CommentController');//comment
             }
         );
 

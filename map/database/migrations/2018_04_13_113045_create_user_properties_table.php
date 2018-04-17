@@ -20,12 +20,12 @@ class CreateUserPropertiesTable extends Migration
                 $table->unsignedInteger('user_id');
                 $table->string('sex')->nullable();
                 $table->text('phones')->nullable();
-                $table->integer('age')->nullable();
+                $table->timestamp('birthday')->nullable();
                 $table->enum('status', ['blocked', 'active']);
 
                 $table->timestamps();
 
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             }
         );
     }

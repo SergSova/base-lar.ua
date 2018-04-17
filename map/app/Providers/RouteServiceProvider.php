@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\BlogCategory;
 use App\Models\Post;
 use App\Models\StaticPage;
+use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -31,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         Route::model('staticPage', StaticPage::class);
         Route::model('post', Post::class);
+        Route::model('user', User::class);
         Route::bind(
             'category',
             function ($catSlug) {
@@ -70,8 +72,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -84,8 +86,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }

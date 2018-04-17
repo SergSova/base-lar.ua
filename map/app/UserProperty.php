@@ -11,18 +11,24 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer id
  * @property integer user_id
  * @property string  sex
- * @property integer age
+ * @property string  phones
+ * @property string  birthday
  * @property string  status
  */
 class UserProperty extends Model
 {
+    const ACTIVE = 'active';
+    const BLOCKED = 'blocked';
+
     protected $fillable
         = [
-            'id',
             'sex',
-            'age',
+            'phones',
+            'birthday',
             'status',
         ];
+
+    protected $dates = ['birthday'];
 
     public function user()
     {
@@ -32,6 +38,19 @@ class UserProperty extends Model
     public function getStatusAttribute($key)
     {
         return $key ?? 'active';
+    }
+
+    public function getExStatusAttribute()
+    {
+        return $this->isActive() ? self::BLOCKED : self::ACTIVE;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->status == self::ACTIVE;
     }
 
 }

@@ -11,8 +11,8 @@
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "spatie/laravel-permission": "^2.9",
         "laravelcollective/html": "^5.4.0",
+        "spatie/laravel-permission": "^2.9",
         "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
