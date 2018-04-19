@@ -136,4 +136,9 @@ class InstitutionSubCategoriesController extends Controller
         return response('1',200);
     }
 
+    public function subcatByCategory($cat_id)
+    {
+        return InstitutionSubCategory::where('parent_id',$cat_id)->get()->flatMap(function ($el){return[$el->name=>$el->id];})->flip();
+    }
+
 }

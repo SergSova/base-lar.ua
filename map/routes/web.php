@@ -145,6 +145,9 @@ Route::group(
                 Route::resource('/institution-categories', 'Admin\InstitutionCategoriesController'); //категории заведений
                 Route::resource('/institution-sub-categories', 'Admin\InstitutionSubCategoriesController');
                 Route::get('/institution-sub-categories/create/{parent_id?}', 'Admin\InstitutionSubCategoriesController@create')->name('institution-sub-categories.create');
+                Route::post('/sub-cat-by-cat/{cat_id?}', 'Admin\InstitutionSubCategoriesController@subcatByCategory')->name('subcatByCategory');
+
+
                 Route::resource('/mark', 'Admin\MarkController'); //Метки
                 Route::get('/mark/create/{parent_id?}', 'Admin\MarkController@create')->name('mark.create');
                 Route::resource('/criteria', 'Admin\CriteriaController'); //Метки

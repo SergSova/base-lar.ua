@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
 use App\Models\Institution;
+use App\Models\InstitutionCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,8 +36,13 @@ class InstitutionController extends Controller
                 return [$el->name => $el->id];
             }
         )->flip();
+        $all_category = InstitutionCategory::all()->flatMap(
+            function ($el) {
+                return [$el->name => $el->id];
+            }
+        )->flip();
 
-        return view('admin.inst.form')->with(compact('model', 'all_country'));
+        return view('admin.inst.form')->with(compact('model', 'all_country', 'all_category'));
     }
 
     /**
