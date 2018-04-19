@@ -19,21 +19,25 @@
     <div class="container">
         <h1>{{$title}}</h1>
         <a href="{{route('institution-sub-categories.create')}}">
-            <button class="btn btn-sm btn-primary">Добавить категорию</button>
+            <button class="btn btn-sm btn-primary">Добавить подкатегорию</button>
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Категория</th>
                 <th>Имя</th>
-                <th>Edit / Delete</th>
+                <th>Show / Edit / Delete</th>
             </tr>
             @foreach($models as $model)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
                     <td><a href="{{route('institution-categories.show',$model->parent->id)}}">{{$model->parent->name}}</a></td>
                     <td>{{$model->name}}</td>
                     <td>
+                        <a href="{{route('institution-sub-categories.show',$model->id)}}" class="text-primary">Show</a>
+                        /
                         <a href="{{route('institution-sub-categories.edit',$model->id)}}" class="text-info">Edit</a>
                         /
                         <a class="text-danger  btn-destr"
@@ -43,7 +47,7 @@
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$models->links()}}
+            {{$models->links('admin.blog.pagination')}}
         </nav>
     </div>
 @endsection

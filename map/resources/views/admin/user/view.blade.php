@@ -59,6 +59,9 @@ $title = 'Пользователи';
                 </tr>
             @endforeach
         </table>
+        <nav aria-label="Page navigation example">
+            {{$users->links('admin.blog.pagination')}}
+        </nav>
         @endrole
     </div>
 @endsection

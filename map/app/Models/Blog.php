@@ -27,7 +27,7 @@ class Blog extends StaticPage
      */
     public function posts()
     {
-        return Post::orderBy('publishedOn', 'desc')->withTrashed()->get();
+        return Post::orderBy('publishedOn', 'desc')->withTrashed()->paginate(10);
     }
 
     protected $fillable = [

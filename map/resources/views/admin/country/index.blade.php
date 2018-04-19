@@ -22,6 +22,7 @@
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Имя</th>
                 <th>Edit</th>
@@ -29,6 +30,7 @@
             </tr>
             @foreach($models as $model)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
                     <td>{{$model->name}}</td>
                     <td>
@@ -41,7 +43,7 @@
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$models->links()}}
+            {{$models->links('admin.blog.pagination')}}
         </nav>
     </div>
 @endsection

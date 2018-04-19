@@ -127,7 +127,7 @@ class MarkController extends Controller
     {
         Mark::destroy($id);
 
-        return true;
+        return response('1',200);
     }
 
 }

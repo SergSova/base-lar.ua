@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Criteria;
 use App\Models\InstitutionCategory;
 use App\Models\InstitutionSubCategory;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class InstitutionSubCategoriesController extends Controller
     public function index()
     {
         $models = InstitutionSubCategory::paginate(15);
-        $title = 'Категории заведений';
+        $title = 'Подкатегории заведений';
 
         return view("admin.institution-sub-categories.index")->with(compact('models', 'title'));
     }
@@ -75,7 +76,12 @@ class InstitutionSubCategoriesController extends Controller
      */
     public function show($id)
     {
-        return redirect(route("institution-sub-categories.index"));
+        $model = InstitutionSubCategory::find($id);
+        $title = $model->name;
+        $parent_id = $id;
+        $models = $model->criteries()->paginate(15);
+
+        return view('admin.institution-sub-categories.show')->with(compact('models', 'title', 'parent_id'));
     }
 
     /**
@@ -127,7 +133,7 @@ class InstitutionSubCategoriesController extends Controller
     {
         InstitutionSubCategory::destroy($id);
 
-        return true;
+        return response('1',200);
     }
 
 }

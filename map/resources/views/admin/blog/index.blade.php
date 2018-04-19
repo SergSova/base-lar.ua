@@ -45,7 +45,7 @@ $date = Carbon::now()->diffForHumans();
                 <td></td>
             </tr>
             </thead>
-            @forelse($model->posts()/*->where('lang',app()->getLocale())*/ as $post)
+            @forelse($models=$model->posts()/*->where('lang',app()->getLocale())*/ as $post)
                 <tr {{$post->trashed()?'class=table-danger':''}}>
                     <td>{{$post->id}}</td>
                     {{--                    <td>{{$post->index}}</td>--}}
@@ -83,7 +83,9 @@ $date = Carbon::now()->diffForHumans();
             @empty
             @endforelse
         </table>
-
+        <nav aria-label="Page navigation example">
+            {{$models->links('admin.blog.pagination')}}
+        </nav>
     </div>
 @endsection
 

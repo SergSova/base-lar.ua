@@ -145,6 +145,8 @@ Route::group(
                 Route::get('/institution-sub-categories/create/{parent_id?}', 'Admin\InstitutionSubCategoriesController@create')->name('institution-sub-categories.create');
                 Route::resource('/mark', 'Admin\MarkController'); //Метки
                 Route::get('/mark/create/{parent_id?}', 'Admin\MarkController@create')->name('mark.create');
+                Route::resource('/criteria', 'Admin\CriteriaController'); //Метки
+                Route::get('/criteria/create/{parent_id?}', 'Admin\CriteriaController@create')->name('criteria.create');
                 Route::resource('/institution', 'Admin\InstitutionController'); //заведения
 
                 Route::resource('/yammer', 'Admin\YammerController');//жалобы

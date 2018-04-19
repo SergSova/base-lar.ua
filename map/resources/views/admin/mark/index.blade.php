@@ -23,15 +23,19 @@
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Категория</th>
+                <th>icon</th>
                 <th>Имя</th>
                 <th>Edit / Delete</th>
             </tr>
             @foreach($models as $model)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
                     <td><a href="{{route('institution-categories.show',$model->parent->id)}}">{{$model->parent->name}}</a></td>
+                    <td><img src="{{$mark->icon}}" alt="{{$mark->name}}"></td>
                     <td>{{$model->name}}</td>
                     <td>
                         <a href="{{route('mark.edit',$model->id)}}" class="text-info">Edit</a>
@@ -43,7 +47,7 @@
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$models->links()}}
+            {{$models->links('admin.blog.pagination')}}
         </nav>
     </div>
 @endsection

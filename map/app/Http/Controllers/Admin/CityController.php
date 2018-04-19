@@ -116,7 +116,7 @@ class CityController extends Controller
     {
         City::destroy($id);
 
-        return 1;
+        return response('1',200);
     }
 
     public function cityByCountry($country_id)

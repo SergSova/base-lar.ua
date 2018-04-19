@@ -105,7 +105,7 @@ class CountryController extends Controller
     {
         Country::destroy($id);
 
-        return 1;
+        return response('1',200);
     }
 
 }

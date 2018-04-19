@@ -118,6 +118,6 @@ class DistrictController extends Controller
     {
         District::destroy($id);
 
-        return true;
+        return response('1',200);
     }
 }

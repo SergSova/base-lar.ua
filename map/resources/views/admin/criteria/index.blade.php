@@ -6,8 +6,9 @@
  * Time: 16:37
  */
 
+
 /**
- * @var \App\Models\Country[] $models
+ * @var \App\Models\Criteria[] $models
  */
 ?>
 @section('title',$title)
@@ -17,28 +18,29 @@
 @section('content')
     <div class="container">
         <h1>{{$title}}</h1>
-        <a href="{{route('city.create')}}">
-            <button class="btn btn-sm btn-primary">Добавить город</button>
+        <a href="{{route('criteria.create')}}">
+            <button class="btn btn-sm btn-primary">Добавить метку</button>
         </a>
         <table class="table table-striped">
             <tr>
                 <th>#</th>
                 <th>Id</th>
+                <th>Категория</th>
                 <th>Имя</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Edit / Delete</th>
             </tr>
             @foreach($models as $model)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
+                    <td><a href="{{route('institution-categories.show',$model->parent->id)}}">{{$model->parent->name}}</a></td>
                     <td>{{$model->name}}</td>
                     <td>
-                        <a href="{{route('city.edit',$model->id)}}" class="btn btn-sm btn-info">Edit
-                        </a>
+                        <a href="{{route('criteria.edit',$model->id)}}" class="text-info">Edit</a>
+                        /
+                        <a class="text-danger  btn-destr"
+                           data-url="{{route('criteria.destroy',$model->id)}}">Delete</a>
                     </td>
-                    <td><a class="btn-destr btn btn-danger btn-sm"
-                           data-url="{{route('city.destroy',$model->id)}}">Delete</a></td>
                 </tr>
             @endforeach
         </table>

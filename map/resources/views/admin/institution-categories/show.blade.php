@@ -17,21 +17,26 @@
 
 @section('content')
     <div class="container">
+        <a href="{{route('institution-categories.index')}}" class="btn btn-success btn-sm">К категориям</a>
         <h1>{{$title}}</h1>
         <a href="{{route('institution-sub-categories.create',$parent_id)}}">
             <button class="btn btn-sm btn-primary">Добавить подкатегорию</button>
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Имя</th>
-                <th>Edit / Delete</th>
+                <th>Show / Edit / Delete</th>
             </tr>
             @foreach($models as $model)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
                     <td>{{$model->name}}</td>
                     <td>
+                        <a href="{{route('institution-sub-categories.show',$model->id)}}" class="text-primary">Show</a>
+                        /
                         <a href="{{route('institution-sub-categories.edit',$model->id)}}" class="text-info">Edit</a>
                         /
                         <a href="#" class="text-danger btn-destr" data-url="{{route('institution-sub-categories.destroy',$model->id)}}">Delete</a>
@@ -40,7 +45,7 @@
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$models->links()}}
+            {{$models->links('admin.blog.pagination')}}
         </nav>
 
         <a href="{{route('mark.create',$parent_id)}}">
@@ -48,13 +53,17 @@
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
+                <th>icon</th>
                 <th>Имя</th>
                 <th>Edit / Delete</th>
             </tr>
             @foreach($marks as $mark)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$mark->id}}</td>
+                    <td><img src="{{$mark->icon}}" alt="{{$mark->name}}"></td>
                     <td>{{$mark->name}}</td>
                     <td>
                         <a href="{{route('mark.edit',$mark->id)}}" class="text-info">Edit</a>
@@ -65,7 +74,7 @@
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$marks->links()}}
+            {{$marks->links('admin.blog.pagination')}}
         </nav>
     </div>
 @endsection

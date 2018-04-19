@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Criteria;
 use App\Models\InstitutionCategory;
 use App\Models\InstitutionSubCategory;
 use App\Models\Mark;
@@ -53,7 +54,14 @@ class InstitutionCategoriesController extends Controller
     public function store(Request $request)
     {
         $model = new InstitutionCategory();
+
         if ($model->fill($request->all()) && $model->save()) {
+            $subCat = new InstitutionSubCategory(['name' => 'Подкатегория', 'parent_id' => $model->id]);
+            $subCat->save();
+            $criterie = new Criteria(['name' => 'Критерий', 'sub_cat_id' => $subCat->id]);
+            $subCat->criteries()->save($criterie);
+            $model->subcat()->save($subCat);
+
             return redirect(route("institution-categories.show", $model->id));
         }
 
@@ -71,8 +79,8 @@ class InstitutionCategoriesController extends Controller
     {
         $title = InstitutionCategory::find($id)->name;
         $parent_id = $id;
-        $models = InstitutionSubCategory::where('parent_id', $id)->paginate(15);
-        $marks = Mark::where('cat_id', $id)->paginate(15);
+        $models = InstitutionSubCategory::where('parent_id', $id)->paginate(5);
+        $marks = Mark::where('cat_id', $id)->paginate(5);
 
         return view('admin.institution-categories.show')->with(compact('models', 'marks', 'title', 'parent_id'));
     }
@@ -121,7 +129,7 @@ class InstitutionCategoriesController extends Controller
     {
         InstitutionCategory::destroy($id);
 
-        return true;
+        return response('1',200);
     }
 
 }

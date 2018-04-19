@@ -45,10 +45,10 @@ return [
     // You should create routes to serve images if it is not set to public.
     'base_directory' => 'public',
 
-    'images_folder_name' => 'photos',
+    'images_folder_name' => 'images',
     'files_folder_name'  => 'files',
 
-    'shared_folder_name' => 'shares',
+    'shared_folder_name' => '',
     'thumb_folder_name'  => 'thumbs',
 
     /*
@@ -69,7 +69,7 @@ return [
     */
 
     // If true, the uploaded file will be renamed to uniqid() + file extension.
-    'rename_file' => false,
+    'rename_file' => true,
 
     // If rename_file set to false and this set to true, then non-alphanumeric characters in filename will be replaced.
     'alphanumeric_filename' => false,

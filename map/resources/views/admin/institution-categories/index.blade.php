@@ -23,12 +23,14 @@
         </a>
         <table class="table table-striped">
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Имя</th>
                 <th>Show / Edit / Delete</th>
             </tr>
             @foreach($models as $model)
                 <tr>
+                    <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
                     <td>{{$model->name}}</td>
                     <td>
@@ -36,14 +38,13 @@
                         /
                         <a href="{{route('institution-categories.edit',$model->id)}}" class="text-info">Edit</a>
                         /
-                        <a class="text-danger  btn-destr"
-                           data-url="{{route('institution-categories.destroy',$model->id)}}">Delete</a>
+                        <a href="#" class="text-danger  btn-destr" data-url="{{route('institution-categories.destroy',$model->id)}}">Delete</a>
                     </td>
                 </tr>
             @endforeach
         </table>
         <nav aria-label="Page navigation example">
-            {{$models->links()}}
+            {{$models->links('admin.blog.pagination')}}
         </nav>
     </div>
 @endsection
@@ -53,7 +54,10 @@
     <script>
         $('.btn-destr').on('click', function (e) {
             e.preventDefault(e);
-            if (confirm('Вы уверенны?'))
+            if (confirm('Вы уверенны?')) {
+                // console.log($(this).siblings('form.form-del').submit());
+                // $(this).siblings().find('form.form-del').submit();
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -67,6 +71,8 @@
                         }
                     }
                 });
+            }
         });
+
     </script>
 @endsection

@@ -19,7 +19,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         $roles = Role::all();
 
         return view('admin.user.view')->with(compact('users', 'roles'));
@@ -41,7 +41,11 @@ class UsersController extends Controller
 
     public function destroy($user_id)
     {
-        return User::destroy($user_id);
+        if (User::destroy($user_id)) {
+            return response('1', 200);
+        } else {
+            return response('0', 405);
+        }
     }
 
     public function userStatus($user, $status)
@@ -66,6 +70,7 @@ class UsersController extends Controller
         $user->property->fill($r_arr);
         if ($user->property->save() && $user->save()) {
             Session::flash('flash_message', 'Пользователь "'.strip_tags($user->name)." ($user->id)".'" обновлен');
+
             return redirect(route('user.index'));
         }
 

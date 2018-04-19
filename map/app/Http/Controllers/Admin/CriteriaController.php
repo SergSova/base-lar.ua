@@ -1,15 +1,23 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Chepur
+ * Date: 17.04.2018
+ * Time: 12:18
+ */
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Country;
-use App\Models\District;
-use App\Models\Metro;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class MetroController extends Controller
+use App\Http\Controllers\Controller;
+use App\Models\InstitutionCategory;
+use App\Models\Criteria;
+use App\Models\InstitutionSubCategory;
+use Illuminate\Http\Request;
+
+class CriteriaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +25,10 @@ class MetroController extends Controller
      */
     public function index()
     {
-        $models = Metro::paginate(15);
-        $title = 'Метро';
+        $models = Criteria::paginate(15);
+        $title = 'Критерии оценки заведений';
 
-        return view('admin.metro.index')->with(compact('models', 'title'));
+        return view("admin.criteria.index")->with(compact('models', 'title'));
     }
 
     /**
@@ -28,16 +36,18 @@ class MetroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($sub_cat_id = null)
     {
-        $model = new Metro();
-        $all_countries = Country::all()->flatMap(
+        $model = new Criteria();
+        $model->sub_cat_id = $sub_cat_id;
+
+        $all_sub_category = InstitutionSubCategory::all()->flatMap(
             function ($el) {
                 return [$el->name => $el->id];
             }
         )->flip();
 
-        return view('admin.metro.form')->with(compact('model', 'all_countries'));
+        return view("admin.criteria.form")->with(compact('model', 'all_sub_category'));
     }
 
     /**
@@ -49,12 +59,12 @@ class MetroController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Metro();
+        $model = new Criteria();
         if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route('metro.index'));
+            return redirect(route("institution-sub-categories.show", $model->sub_cat_id));
         }
 
-        return redirect(route('metro.create'))->withInput($request->input());
+        return redirect(route("criteria.create"))->withInput($request->input());
     }
 
     /**
@@ -66,7 +76,7 @@ class MetroController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('metro.index'));
+        return redirect(route("criteria.index"));
     }
 
     /**
@@ -78,16 +88,15 @@ class MetroController extends Controller
      */
     public function edit($id)
     {
-        /** @var District $model */
-        $model = Metro::find($id);
-        $all_countries = Country::all()->flatMap(
+        /** @var Criteria $model */
+        $model = Criteria::find($id);
+        $all_sub_category = InstitutionSubCategory::all()->flatMap(
             function ($el) {
                 return [$el->name => $el->id];
             }
         )->flip();
-        $city_arr = [$model->city_id => $model->city->name];
 
-        return view('admin.metro.form')->with(compact('model', 'all_countries', 'city_arr'));
+        return view("admin.criteria.form")->with(compact('model', 'all_sub_category'));
     }
 
     /**
@@ -100,25 +109,26 @@ class MetroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = Metro::find($id);
+        $model = Criteria::find($id);
         if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route('metro.index'));
+            return redirect(route("institution-sub-categories.show", $model->sub_cat_id));
         }
 
-        return redirect(route('metro.create'))->withInput($request->input());
+        return redirect(route("criteria.create"))->withInput($request->input());
     }
 
     /**
-     * @param $id
+     * Remove the specified resource from storage.
      *
-     * @return string
+     * @param  int $id
+     *
+     * @return int
      */
     public function destroy($id)
     {
-        if (Metro::destroy($id)) {
-            return response('1', 200);
-        } else {
-            return response('0', 405);
-        }
+        Criteria::destroy($id);
+
+        return response('1',200);
     }
+
 }
