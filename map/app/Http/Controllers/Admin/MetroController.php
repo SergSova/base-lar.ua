@@ -121,4 +121,13 @@ class MetroController extends Controller
             return response('0', 405);
         }
     }
+
+    public function metroByCity($city_id)
+    {
+        return Metro::where('city_id', $city_id)->get()->flatMap(
+            function ($el) {
+                return [$el->name => $el->id];
+            }
+        )->flip()->toJson();
+    }
 }

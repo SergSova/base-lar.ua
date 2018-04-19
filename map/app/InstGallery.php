@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @property int         id
  * @property int         inst_id
+ * @property int         index
  * @property string      path
  * @property string      desc
  * @property string      title
@@ -22,6 +23,7 @@ class InstGallery extends Model
     protected $fillable
         = [
             'inst_id',
+            'index',
             'path',
             'desc',
             'title',

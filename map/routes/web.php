@@ -137,8 +137,10 @@ Route::group(
                 Route::resource('/city', 'Admin\CityController'); //города
                 Route::post('/city-by-country/{country_id?}', 'Admin\CityController@cityByCountry')->name('cityByCountry'); //получить города по стране
                 Route::resource('/dist', 'Admin\DistrictController'); //районы
-                Route::resource('/metro', 'Admin\MetroController'); //метро
+                Route::post('/dist-by-city/{city_id?}', 'Admin\DistrictController@distByCity')->name('distByCity'); //получить район по городу
 
+                Route::resource('/metro', 'Admin\MetroController'); //метро
+                Route::post('/metro-by-city/{city_id?}', 'Admin\MetroController@metroByCity')->name('metroByCity'); //получить метро по городу
 
                 Route::resource('/institution-categories', 'Admin\InstitutionCategoriesController'); //категории заведений
                 Route::resource('/institution-sub-categories', 'Admin\InstitutionSubCategoriesController');
@@ -152,6 +154,14 @@ Route::group(
                 Route::resource('/yammer', 'Admin\YammerController');//жалобы
                 Route::resource('/review', 'Admin\ReviewController');//отзывы
                 Route::resource('/comment', 'Admin\CommentController');//comment
+
+
+                Route::resource('/gallery', 'Admin\InstGalleryController');
+                Route::get('/gallery/create/{id}', 'Admin\InstGalleryController@create')->name('gallery.create');
+                Route::get('/gallery/index/{id}', 'Admin\InstGalleryController@index')->name('gallery.index');
+
+                Route::resource('/inst', 'Admin\InstitutionController');
+
             }
         );
 

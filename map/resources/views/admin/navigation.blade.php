@@ -48,7 +48,7 @@ $route = \Request::route()->getName();
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{route('institution-categories.index')}}">Категории</a>
 {{--                        <a class="dropdown-item" href="{{route('institution-sub-categories.index')}}">Подкатегории</a>--}}
-                        <a class="dropdown-item" href="{{route('institution.index')}}">Заведения</a>
+                        <a class="dropdown-item" href="{{route('inst.index')}}">Заведения</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('yammer.index')}}">Жалобы</a>
                         <a class="dropdown-item" href="{{route('review.index')}}">Отзывы</a>

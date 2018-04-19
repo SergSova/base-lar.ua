@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
-use App\Models\District;
+use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DistrictController extends Controller
+class InstitutionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $models = District::paginate(15);
-        $title = 'Районы';
+        $models = Institution::paginate(15);
+        $title = 'Заведения';
 
-        return view('admin.dist.index')->with(compact('models', 'title'));
+        return view('admin.inst.index')->with(compact('models', 'title'));
     }
 
     /**
@@ -29,14 +29,14 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        $model = new District();
-        $all_countries = Country::all()->flatMap(
+        $model = new Institution();
+        $all_country = Country::all()->flatMap(
             function ($el) {
                 return [$el->name => $el->id];
             }
         )->flip();
 
-        return view('admin.dist.form')->with(compact('model', 'all_countries'));
+        return view('admin.inst.form')->with(compact('model', 'all_country'));
     }
 
     /**
@@ -48,12 +48,7 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new District();
-        if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route('dist.index'));
-        }
-
-        return redirect(route('dist.create'))->withInput($request->input());
+        //
     }
 
     /**
@@ -65,7 +60,7 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
-        return redirect(route('dist.index'));
+        //
     }
 
     /**
@@ -77,16 +72,7 @@ class DistrictController extends Controller
      */
     public function edit($id)
     {
-        /** @var District $model */
-        $model = District::find($id);
-        $all_countries = Country::all()->flatMap(
-            function ($el) {
-                return [$el->name => $el->id];
-            }
-        )->flip();
-        $city_arr = [$model->city_id => $model->city->name];
-
-        return view('admin.dist.form')->with(compact('model', 'all_countries', 'city_arr'));
+        //
     }
 
     /**
@@ -99,12 +85,7 @@ class DistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = District::find($id);
-        if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route('dist.index'));
-        }
-
-        return redirect(route('dist.create'))->withInput($request->input());
+        //
     }
 
     /**
@@ -116,17 +97,6 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
-        District::destroy($id);
-
-        return response('1', 200);
-    }
-
-    public function distByCity($city_id)
-    {
-        return District::where('city_id', $city_id)->get()->flatMap(
-            function ($el) {
-                return [$el->name => $el->id];
-            }
-        )->flip()->toJson();
+        //
     }
 }
