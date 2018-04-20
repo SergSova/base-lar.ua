@@ -74,6 +74,17 @@ class Institution extends Model
             'schedule'   => 'array',
         ];
 
+
+    public function getMarksAttribute()
+    {
+        return $this->category ? $this->category->marks : [];
+    }
+
+    public function getSubcatAttribute()
+    {
+        return $this->category ? $this->category->subcat : [];
+    }
+
     public function author()
     {
         return $this->hasOne(User::class, 'id', 'author_id');
@@ -83,6 +94,7 @@ class Institution extends Model
     {
         return $this->hasOne(InstitutionCategory::class, 'id', 'category_id');
     }
+
 
     public function metro()
     {

@@ -31,16 +31,8 @@ class InstitutionController extends Controller
     public function create()
     {
         $model = new Institution();
-        $all_country = Country::all()->flatMap(
-            function ($el) {
-                return [$el->name => $el->id];
-            }
-        )->flip();
-        $all_category = InstitutionCategory::all()->flatMap(
-            function ($el) {
-                return [$el->name => $el->id];
-            }
-        )->flip();
+        $all_country = Country::pluck('name','id');
+        $all_category = InstitutionCategory::pluck('name','id');
 
         return view('admin.inst.form')->with(compact('model', 'all_country', 'all_category'));
     }

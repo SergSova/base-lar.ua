@@ -17,7 +17,7 @@ class CreateMarksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('icon')->nullable();
-            $table->unsignedInteger('cat_id');
+            $table->unsignedInteger('cat_id')->nullable();
 
             $table->foreign('cat_id')->references( 'id' )->on( 'institution_categories' )
                 ->onDelete( 'cascade' );

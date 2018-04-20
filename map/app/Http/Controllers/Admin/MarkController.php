@@ -60,7 +60,7 @@ class MarkController extends Controller
     {
         $model = new Mark();
         if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route("institution-categories.show", $model->parent_id));
+            return redirect(route("institution-categories.show", $model->cat_id));
         }
 
         return redirect(route("mark.create"))->withInput($request->input());
@@ -110,7 +110,7 @@ class MarkController extends Controller
     {
         $model = Mark::find($id);
         if ($model->fill($request->all()) && $model->save()) {
-            return redirect(route("institution-categories.show", $model->parent_id));
+            return redirect(route("institution-categories.show", $model->cat_id));
         }
 
         return redirect(route("mark.create"))->withInput($request->input());
@@ -127,7 +127,12 @@ class MarkController extends Controller
     {
         Mark::destroy($id);
 
-        return response('1',200);
+        return response('1', 200);
+    }
+
+    public function markByCategory($cat_id)
+    {
+        return Mark::whereNull('cat_id')->orWhere('cat_id', $cat_id)->pluck('name', 'id');
     }
 
 }

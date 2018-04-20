@@ -34,8 +34,14 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$model->id}}</td>
-                    <td><a href="{{route('institution-categories.show',$model->parent->id)}}">{{$model->parent->name}}</a></td>
-                    <td><img src="{{$mark->icon}}" alt="{{$mark->name}}"></td>
+                    <td>
+                        @isset($model->cat_id)
+                            <a href="{{route('institution-categories.show',$model->parent->id)}}">{{$model->parent->name}}</a>
+                        @else
+                            Общий
+                        @endisset
+                    </td>
+                    <td><img src="{{$model->icon}}" alt="{{$model->name}}"></td>
                     <td>{{$model->name}}</td>
                     <td>
                         <a href="{{route('mark.edit',$model->id)}}" class="text-info">Edit</a>

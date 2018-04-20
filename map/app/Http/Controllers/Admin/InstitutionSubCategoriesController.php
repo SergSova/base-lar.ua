@@ -133,12 +133,16 @@ class InstitutionSubCategoriesController extends Controller
     {
         InstitutionSubCategory::destroy($id);
 
-        return response('1',200);
+        return response('1', 200);
     }
 
     public function subcatByCategory($cat_id)
     {
-        return InstitutionSubCategory::where('parent_id',$cat_id)->get()->flatMap(function ($el){return[$el->name=>$el->id];})->flip();
+        return InstitutionSubCategory::where('parent_id', $cat_id)->get()->flatMap(
+            function ($el) {
+                return [$el->name => $el->id];
+            }
+        )->flip();
     }
 
 }

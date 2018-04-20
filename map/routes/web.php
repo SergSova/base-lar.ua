@@ -150,6 +150,7 @@ Route::group(
 
                 Route::resource('/mark', 'Admin\MarkController'); //Метки
                 Route::get('/mark/create/{parent_id?}', 'Admin\MarkController@create')->name('mark.create');
+                Route::post('/mark-by-cat/{cat_id?}', 'Admin\MarkController@markByCategory')->name('markByCategory');
                 Route::resource('/criteria', 'Admin\CriteriaController'); //Метки
                 Route::get('/criteria/create/{parent_id?}', 'Admin\CriteriaController@create')->name('criteria.create');
                 Route::resource('/institution', 'Admin\InstitutionController'); //заведения
